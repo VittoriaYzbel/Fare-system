@@ -1,5 +1,5 @@
 # CS3 Pair Assessment: Fare System
-# Authors: (write your full names here)
+# Authors: Shiloh Quisote
 # Section: (write your section here)
 
 from abc import ABC, abstractmethod
@@ -42,4 +42,28 @@ class Vehicle(ABC):
     
 # ===== Jeepney class (Developer A) =====
 # ===== Tricycle class (Developer B) =====
+
+class Tricycle(Vehicle):
+    def __init__(self, plate_number, capacity, barangay):
+        super().__init__(plate_number, capacity)
+        self.__barangay = barangay
+
+
+    def get_barangay(self):
+        return self.__barangay
+
+
+    def set_barangay(self, barangay):
+        self.__barangay = barangay
+
+
+    def compute_fare(self, distance_km):
+        if distance_km <= 2:
+            return 20.00
+        return round(20.00 + (distance_km -2) * 5.00, 2)
+
+
+    def describe(self):
+        return f"Tricycle {self.__plate_number} | Barangay: {self.__barangay} | Seats: {self.__capacity}"
+    
 # ===== Test code (Part 6 only) =====
